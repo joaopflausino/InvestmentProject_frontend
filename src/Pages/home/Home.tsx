@@ -44,15 +44,10 @@ const Home = () => {
             <Grid container direction="column" justifyContent="center" alignItems="stretch"  spacing={8}>
                 <Grid item>
                   <Paper sx={{height: 320,backgroundColor: (theme) =>theme.palette.mode === 'dark' ? '#1A2027' : '#fff', }}>.
-
                   </Paper>
                 </Grid>
                 <Grid item >
-                  <Grid xs={12} md={8}>
-                    xs=12 md=12
-                  </Grid>
-                  <Paper sx={{height: 320,backgroundColor: (theme) =>theme.palette.mode === 'dark' ? '#1A2027' : '#fff', }}>.
-                    
+                  <Paper sx={{height: 240,backgroundColor: (theme) =>theme.palette.mode === 'dark' ? '#1A2027' : '#fff', }}>.
                   </Paper>
                 </Grid>
             </Grid>

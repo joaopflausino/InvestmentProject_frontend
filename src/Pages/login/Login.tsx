@@ -2,10 +2,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext';
-import { TextField, Button, Container, Typography, Box, Grid,Paper, styled, Link, Divider, makeStyles, AppBar, Toolbar, Avatar } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Grid,Paper, styled, Link, Divider, makeStyles, AppBar, Toolbar, Avatar, ButtonProps, createTheme } from '@mui/material';
 import imagem1 from "../../shared/images/Carteira.png";
 import imagem2 from "../../shared/images/logo-aurum.png";
 import "./Login.css";
+import { yellow } from '@mui/material/colors';
 
 interface Props {}
 
@@ -39,18 +40,24 @@ const Login = (props: Props) => {
       marginRight: '10px'
     }
   }));
-
-
+  const theme = createTheme();
+  const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+    color: theme.palette.getContrastText(yellow[500]),
+    backgroundColor: yellow[500],
+    '&:hover': {
+      backgroundColor: yellow[700],
+    },
+  }));
 
 
   return (
   <Container>
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={32}>
+      <Grid container spacing={16}>
         <Grid item xs={12} md={12}>
           <AppBar sx={{bgcolor : "black"}}>
             <Toolbar>
-              <Item>xs=12 md=12</Item>
+              <Item>Gold Investing(mudar)</Item>
             </Toolbar>
           </AppBar>
         </Grid>
@@ -92,15 +99,13 @@ const Login = (props: Props) => {
                 {error}
               </Typography>
             )}
-            <Button
-              variant="contained"
-              color="primary"
+            <ColorButton
               fullWidth
+              sx={{marginY:2}}
               onClick={handleLogin}
-              style={{ margin: '16px 0' }}
             >
               Entrar
-            </Button>
+            </ColorButton>
             <Link href="#" variant="body2" style={{ marginBottom: '16px' }}>
               Esqueceu a senha?
             </Link>
