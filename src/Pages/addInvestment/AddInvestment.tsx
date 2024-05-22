@@ -1,11 +1,20 @@
-import {  Container, Grid, Paper } from '@mui/material';
+import {  Button, Container, Grid, Paper, Stack,Box, Select, MenuItem,Typography, SelectChangeEvent } from '@mui/material';
 import { PieChart } from '@mui/x-charts/PieChart';
 import CustomAccordion from "../../Components/AccordionComponent";
-import React from 'react'
+import React, { useState } from 'react'
+import {yellow,purple} from '@mui/material/colors';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Modal from '@mui/material/Modal';
+import CustomModal from '../../Components/CustomModal';
 
 interface Props  {}
 
-
+const theme = createTheme({
+  palette: {
+    primary: yellow,
+    secondary: purple,
+  },
+});
 
 const AddInvestment = (props: Props) => {
   const data = [
@@ -37,7 +46,66 @@ const AddInvestment = (props: Props) => {
       ],
     },
   ];
+
+  function ChildModal() {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => {
+      setOpen(true);
+    };
+    const handleClose = () => {
+      setOpen(false);
+    };
   
+    return (
+      <React.Fragment>
+        <Button onClick={handleOpen}>Open Child Modal</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: 200 }}>
+            <h2 id="child-modal-title">Text in a child modal</h2>
+            <p id="child-modal-description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            </p>
+            <Button onClick={handleClose}>Close Child Modal</Button>
+          </Box>
+        </Modal>
+      </React.Fragment>
+    );
+  }
+
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const [selectedLayout, setSelectedLayout] = useState<string>('default');
+
+  const handleSelectChange = (event: SelectChangeEvent) => {
+    setSelectedLayout(event.target.value as string);
+  };
+  
+
+  const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    pt: 2,
+    px: 4,
+    pb: 3,
+  };
 
   return (
     <Container>
@@ -58,8 +126,20 @@ const AddInvestment = (props: Props) => {
                 />
               </Paper>
             </Grid>
+            <Stack direction="row" justifyContent="right" spacing={8} sx={{marginTop: 4}}>
+              <Button variant="contained" onClick={handleOpen} sx={{color: theme.palette.getContrastText(yellow[500]),
+                backgroundColor: yellow[500],
+                '&:hover': {
+                  backgroundColor: yellow[700],
+                }}}>
+                Success
+              </Button>
+              <CustomModal
+                open={open}
+                onClose={() => setOpen(false)}/>
+            </Stack>
             <Grid item >
-              <Paper sx={{height: 240,backgroundColor: (theme) =>theme.palette.mode === 'dark' ? '#1A2027' : '#fff', }}>.
+              <Paper sx={{minHeight: 240,backgroundColor: (theme) =>theme.palette.mode === 'dark' ? '#1A2027' : '#fff', }}>.
                 <CustomAccordion items={accordionItems} />
               </Paper>
             </Grid>
