@@ -1,6 +1,6 @@
 import {  Container, Grid, Paper } from '@mui/material';
 import { PieChart } from '@mui/x-charts/PieChart';
-import CustomAccordion from "../../Components/Accordion";
+import CustomAccordion from "../../Components/AccordionComponent";
 import React from 'react'
 
 interface Props  {}

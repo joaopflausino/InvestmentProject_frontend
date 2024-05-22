@@ -7,7 +7,7 @@ import imagem1 from "../../shared/images/Carteira.png";
 import imagem2 from "../../shared/images/logo-aurum.png";
 import "./Login.css";
 import { yellow } from '@mui/material/colors';
-import CustomColorButton from '../../Components/MainButton';
+import CustomColorButton from '../../Components/CustomColorButton';
 
 interface Props {}
 

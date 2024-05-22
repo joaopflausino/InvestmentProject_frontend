@@ -14,7 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import {  yellow } from '@mui/material/colors';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CustomColorButton from '../../Components/MainButton';
+import CustomColorButton from '../../Components/CustomColorButton';
 
 const defaultTheme = createTheme();
 

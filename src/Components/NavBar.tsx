@@ -59,6 +59,7 @@ const Navbar: React.FC = () => {
         {[
           { text: 'Home', icon: <HomeIcon />, link: '/home' },
           { text: 'News', icon: <NewspaperIcon />, link: '/news' },
+          { text: 'User Investments', icon: <AccountBalanceWalletIcon />, link: '/addinvestments' },
           { text: 'Investments', icon: <AccountBalanceWalletIcon />, link: '/investments' },
           { text: 'Simulate', icon: <CalculateIcon />, link: '/simulate' },
           

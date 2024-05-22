@@ -12,7 +12,7 @@ import {
   ButtonProps
 } from '@mui/material';
 import { yellow } from '@mui/material/colors';
-import CustomColorButton from '../../Components/MainButton';
+import CustomColorButton from '../../Components/CustomColorButton';
 
 // Investment calculation functions
 function calculateAnnualRate(monthlyRate: number): number {

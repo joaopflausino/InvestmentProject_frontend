@@ -33,7 +33,7 @@ const routes: RouteObject[] = [
           { path: 'home',          element: <Home />               },
           { path: 'news',          element: <News />               },
           { path: 'account',       element: <Account/>             },
-          { path: 'investments', element: <AddInvestment/>       },
+          { path: 'addinvestments',   element: <AddInvestment/>       },
           { path: 'stocks',        element: <Stocks/>              },
           { path: 'simulate',      element: <SimulateInvestment/>  },
           { path: 'investments',   element: <Investments />        },
