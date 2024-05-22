@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar,Divider } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar,Divider, ListItemButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import CalculateIcon from '@mui/icons-material/Calculate';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
-const StyledDrawer = styled(Drawer)(({ theme }) => ({
+const StyledDrawer = {
   width: drawerWidth,
   flexShrink: 0,
   display: 'flex',
@@ -26,17 +26,33 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
-}));
+}
 
-const MainContent = styled('div')({
-  flexGrow: 1,
-});
+const StyledListItemButton = {
+  '&:hover': {
+    backgroundColor: '#FFC600',
+    color: '#000000',
+    textDecoration: 'none',
+    '& .MuiListItemIcon-root': {
+      color: '#000000',
+    },
+  },
+  '&.Mui-selected': {
+    backgroundColor: '#FFC600',
+    color: '#000000',
+    '& .MuiListItemIcon-root': {
+      color: '#000000',
+    },
+  },
+}
+
 
 const Navbar: React.FC = () => {
   return (
-    <StyledDrawer
+    <Drawer
       variant="permanent"
       anchor="left"
+      sx={StyledDrawer}
     >
       <Toolbar />
       <List>
@@ -47,10 +63,10 @@ const Navbar: React.FC = () => {
           { text: 'Simulate', icon: <CalculateIcon />, link: '/simulate' },
           
         ].map((item, index) => (
-            <ListItem button key={item.text} component={Link} to={item.link}>
+            <ListItemButton sx={StyledListItemButton} key={item.text} component={Link} to={item.link}>
             <ListItemIcon sx={{ color: '#fff' }}>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
       
@@ -60,15 +76,15 @@ const Navbar: React.FC = () => {
             { text: 'Account', icon: <AccountCircleIcon />, link: '/account' },
             { text: 'Logout', icon: <LogoutIcon />, link: '/' },
         ].map((item, index) => (
-            <ListItem button key={item.text} component={Link} to={item.link}>
+            <ListItemButton sx={StyledListItemButton} key={item.text} component={Link} to={item.link}>
             <ListItemIcon sx={{ color: '#fff' }}>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
 
 
-    </StyledDrawer>
+    </Drawer>
   );
 };
 

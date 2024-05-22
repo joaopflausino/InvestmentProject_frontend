@@ -12,6 +12,7 @@ import {
   ButtonProps
 } from '@mui/material';
 import { yellow } from '@mui/material/colors';
+import CustomColorButton from '../../Components/MainButton';
 
 // Investment calculation functions
 function calculateAnnualRate(monthlyRate: number): number {
@@ -54,14 +55,6 @@ const InvestmentCalculator: React.FC = () => {
       [e.target.name]: e.target.value
     });
   };
-
-  const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-    color: theme.palette.getContrastText(yellow[500]),
-    backgroundColor: yellow[500],
-    '&:hover': {
-      backgroundColor: yellow[700],
-    },
-  }));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -166,7 +159,7 @@ const InvestmentCalculator: React.FC = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <ColorButton fullWidth variant="contained" color="primary" type="submit" >Calculate</ColorButton>
+              <CustomColorButton >Calculate</CustomColorButton>
             </Grid>
           </Grid>
         </form>

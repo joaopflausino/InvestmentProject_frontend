@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import {  yellow } from '@mui/material/colors';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CustomColorButton from '../../Components/MainButton';
 
 const defaultTheme = createTheme();
 
@@ -111,14 +112,11 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <ColorButton
-              type="submit"
-              fullWidth
-              variant="contained"
+            <CustomColorButton
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up
-            </ColorButton>
+            </CustomColorButton>
           </Box>
         </Box>
       </Container>

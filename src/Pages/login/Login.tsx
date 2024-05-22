@@ -7,6 +7,7 @@ import imagem1 from "../../shared/images/Carteira.png";
 import imagem2 from "../../shared/images/logo-aurum.png";
 import "./Login.css";
 import { yellow } from '@mui/material/colors';
+import CustomColorButton from '../../Components/MainButton';
 
 interface Props {}
 
@@ -99,13 +100,12 @@ const Login = (props: Props) => {
                 {error}
               </Typography>
             )}
-            <ColorButton
-              fullWidth
+            <CustomColorButton
               sx={{marginY:2}}
               onClick={handleLogin}
             >
               Entrar
-            </ColorButton>
+            </CustomColorButton>
             <Link href="#" variant="body2" style={{ marginBottom: '16px' }}>
               Esqueceu a senha?
             </Link>
