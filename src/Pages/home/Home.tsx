@@ -7,6 +7,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { LineChart} from '@mui/x-charts';
 import Chart from '../../Components/Chart';
+import NewsCarousel from '../../Components/NewsCarousel';
 const Home = () => {
 
   const [news, setNews] = useState<JSX.Element[]>([
@@ -48,6 +49,7 @@ const Home = () => {
                 </Grid>
                 <Grid item >
                   <Paper sx={{height: 240,backgroundColor: (theme) =>theme.palette.mode === 'dark' ? '#1A2027' : '#fff', }}>.
+                    <NewsCarousel/>
                   </Paper>
                 </Grid>
             </Grid>

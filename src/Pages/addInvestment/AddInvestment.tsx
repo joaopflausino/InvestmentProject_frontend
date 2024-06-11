@@ -112,7 +112,7 @@ const AddInvestment = (props: Props) => {
                 '&:hover': {
                   backgroundColor: yellow[700],
                 }}}>
-                Success
+                Add Investment
               </Button>
               <CustomModal
                 open={open}
