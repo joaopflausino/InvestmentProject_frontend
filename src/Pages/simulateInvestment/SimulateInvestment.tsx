@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 import {
   Container,
   TextField,
-  Button,
   Typography,
   Box,
   Grid,
   Paper,
-  createTheme,
-  styled,
-  ButtonProps
+  createTheme
 } from '@mui/material';
-import { yellow } from '@mui/material/colors';
 import CustomColorButton from '../../Components/CustomColorButton';
+import { PieChart } from '@mui/x-charts/PieChart';
 
 // Investment calculation functions
 function calculateAnnualRate(monthlyRate: number): number {
@@ -98,9 +95,11 @@ const InvestmentCalculator: React.FC = () => {
 
     setModalSimulateInvestment(true);
   };
+
   const theme = createTheme();
+
   return (
-    <Container maxWidth="sm" sx={{marginTop:8}}>
+    <Container maxWidth="sm" sx={{ marginTop: 8 }}>
       <Paper elevation={3} sx={{ padding: 4 }}>
         <Typography variant="h4" gutterBottom>Investment Calculator</Typography>
         <form onSubmit={handleSubmit}>
@@ -159,7 +158,7 @@ const InvestmentCalculator: React.FC = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <CustomColorButton >Calculate</CustomColorButton>
+              <CustomColorButton type="submit">Calculate</CustomColorButton>
             </Grid>
           </Grid>
         </form>
@@ -174,6 +173,20 @@ const InvestmentCalculator: React.FC = () => {
             <Typography variant="body1">Future Value: {result.futureValue?.toFixed(2)}</Typography>
             <Typography variant="body1">Total Invested: {result.totalInvested?.toFixed(2)}</Typography>
             <Typography variant="body1">Gross Profit: {result.grossProfit?.toFixed(2)}</Typography>
+            <PieChart
+              series={[
+                {
+                  data: [
+                    { id: 'Future Value', value: result.futureValue || 0, label: 'Future Value' },
+                    { id: 'Total Invested', value: result.totalInvested || 0, label: 'Total Invested' },
+                    { id: 'Gross Profit', value: result.grossProfit || 0, label: 'Gross Profit' }
+                  ],
+                  highlightScope: { faded: 'global', highlighted: 'item' },
+                  faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' }
+                }
+              ]}
+              height={200}
+            />
           </Box>
         )}
       </Paper>

@@ -11,11 +11,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { PieChart } from '@mui/x-charts/PieChart';
 
 interface TableRowData {
   id: number;
   name: string;
-  value: string;
+  value: number;
 }
 
 interface AccordionItem {
@@ -30,39 +31,54 @@ interface AccordionComponentProps {
 const AccordionComponent: React.FC<AccordionComponentProps> = ({ items }) => {
   return (
     <div>
-      {items.map((item, index) => (
-        <Accordion key={index}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={`panel${index}-content`}
-            id={`panel${index}-header`}
-          >
-            <Typography>{item.title}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>ID</TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Value</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {item.rows.map((row) => (
-                    <TableRow key={row.id}>
-                      <TableCell>{row.id}</TableCell>
-                      <TableCell>{row.name}</TableCell>
-                      <TableCell>{row.value}</TableCell>
+      {items.map((item, index) => {
+        // Transform the rows into the format expected by PieChart
+        const pieData = item.rows.map(row => ({ label: row.name, value: row.value }));
+        
+        return (
+          <Accordion key={index}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={`panel${index}-content`}
+              id={`panel${index}-header`}
+            >
+              <Typography>{item.title}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <PieChart
+                series={[
+                  {
+                    data: pieData,
+                    highlightScope: { faded: 'global', highlighted: 'item' },
+                    faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
+                  },
+                ]}
+                height={200}
+              />
+              <TableContainer component={Paper}>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>ID</TableCell>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Value</TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+                  </TableHead>
+                  <TableBody>
+                    {item.rows.map((row) => (
+                      <TableRow key={row.id}>
+                        <TableCell>{row.id}</TableCell>
+                        <TableCell>{row.name}</TableCell>
+                        <TableCell>{row.value}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
     </div>
   );
 };

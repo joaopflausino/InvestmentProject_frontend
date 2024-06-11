@@ -18,64 +18,44 @@ const theme = createTheme({
 
 const AddInvestment = (props: Props) => {
   const data = [
-    { id: 0, value: 10, label: 'series A' },
-    { id: 1, value: 15, label: 'series B' },
-    { id: 2, value: 20, label: 'series C' },
+    { id: 0, value: 10, label: 'Renda Fixa' },
+    { id: 1, value: 15, label: 'Ações' },
+    { id: 2, value: 20, label: 'Tesouro Direto' },
+    { id: 3, value: 45, label: 'Conta Corrente' },
   ];
 
   const accordionItems = [
     {
-      title: 'Accordion 1',
+      title: 'Renda Fixa',
       rows: [
-        { id: 1, name: 'Item 1', value: 'Value 1' },
-        { id: 2, name: 'Item 2', value: 'Value 2' },
+        { id: 1, name: 'Item 1', value: 80 },
+        { id: 2, name: 'Item 2', value: 15 },
       ],
     },
     {
-      title: 'Accordion 2',
+      title: 'Ações',
       rows: [
-        { id: 3, name: 'Item 3', value: 'Value 3' },
-        { id: 4, name: 'Item 4', value: 'Value 4' },
+        { id: 3, name: 'Item 3', value: 10 },
+        { id: 4, name: 'Item 4', value: 15 },
       ],
     },
     {
-      title: 'Accordion 3',
+      title: 'Tesouro Direto',
       rows: [
-        { id: 5, name: 'Item 5', value: 'Value 5' },
-        { id: 6, name: 'Item 6', value: 'Value 6' },
+        { id: 5, name: 'Item 5', value: 10 },
+        { id: 6, name: 'Item 6', value: 15 },
+      ],
+    },
+    {
+      title: 'Conta Corrente',
+      rows: [
+        { id: 7, name: 'Item 5', value: 10 },
+        { id: 8, name: 'Item 6', value: 15 },
       ],
     },
   ];
 
-  function ChildModal() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
-      setOpen(true);
-    };
-    const handleClose = () => {
-      setOpen(false);
-    };
-  
-    return (
-      <React.Fragment>
-        <Button onClick={handleOpen}>Open Child Modal</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="child-modal-title"
-          aria-describedby="child-modal-description"
-        >
-          <Box sx={{ ...style, width: 200 }}>
-            <h2 id="child-modal-title">Text in a child modal</h2>
-            <p id="child-modal-description">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            </p>
-            <Button onClick={handleClose}>Close Child Modal</Button>
-          </Box>
-        </Modal>
-      </React.Fragment>
-    );
-  }
+
 
 
   const [open, setOpen] = React.useState(false);
