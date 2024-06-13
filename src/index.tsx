@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {router} from "./Routes/Routes";
+import { router } from './Routes/Routes';
 import { RouterProvider } from 'react-router-dom';
-import { AuthProvider } from './auth/AuthContext';
 import { CssBaseline } from '@mui/material';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,10 +13,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <AuthProvider>
+    <Provider store={store}>
       <CssBaseline />
       <RouterProvider router={router} />
-    </AuthProvider>
-  </React.StrictMode>,
+    </Provider>
+  </React.StrictMode>
 );
-
